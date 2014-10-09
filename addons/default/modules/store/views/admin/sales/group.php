@@ -1,6 +1,6 @@
 	
 <section class="title">
-    <h4>Promocja grupowa</h4>
+    <h4>Group Sales</h4>
 </section>
 
 
@@ -10,15 +10,15 @@
         <fieldset>
             <ul>
                 <li class="<?php echo alternator('even', ''); ?>">
-                    <label for="sale_type">Rodzaj promocji</label>
+                    <label for="sale_type">Type of Sale</label>
                     <div class="input">
                         <?php
                         echo form_dropdown('sale_type', array(
                             '' => lang('global:select-any'),
-                            'sale' => 'Wyprzedaż',
-                            'reduce' => 'Obniżka',
-                            'promo' => 'Promocja',
-                            'featured' => 'Polecane',
+                            'sale' => 'Sale',
+                            'reduce' => 'Reduce',
+                            'promo' => 'Promo',
+                            'featured' => 'Featured',
                                 ), set_value('sale_type', $sale_type), 'id="sale_type" autocomplete="off"');
                         ?>
                     </div>

@@ -1,3 +1,4 @@
+<span style="float: right;"><a href="{{ url:site }}store/cart" >View Cart</a></span>
 <h2 id="page_title"><?php echo $product->name; ?></h2>
 
 <div class="product">
@@ -11,7 +12,8 @@
             <?php echo form_hidden('id', $product->id); ?>
            
                 <div class="price-tag">
-                <?php if (isset($product->sale_type)): ?>
+                    {{ settings:currency }}
+                    <?php if (isset($product->sale_type)): ?>
                     <span class="<?php echo $product->sale_type; ?>">
                         <?php echo $product->sale_type == 'reduce' ? '-' . $product->reduction . '%' : lang('store:option_' . $product->sale_type); ?>
                     </span>
@@ -26,7 +28,9 @@
                 <?php else: ?>
                     <span id="price" data-price="{{ product:price_tax }}">{{ product:price_tax }}</span>
                 <?php endif; ?>
-                {{ settings:currency }}
+                    each.
+                    <br />
+                    {{ settings:currency }} <?php echo($product->price_tax * 12) . " per case (12 bottles)"; ?>
                 </div>
                 
                 {{ if product:short }}
@@ -45,13 +49,17 @@
                     </div>
                     <?php endforeach; ?>
                 {{ endif }}
+                    <br />
                     <div class="input">
-                        <label><?php echo lang('store:quantity'); ?>:</label>
+                        <label><?php echo lang('store:quantity').(' (enter 12 to order a case)'); ?>:</label>
                         <input type="text" name="quantity" value="1" />
                     </div>
                     <div class="input">
                         <?php echo form_submit('submit', lang('store:add_to_cart'), 'class="add-item"'); ?><br />
                     </div>
+                    <p>
+                        Not wanting to buy now? <a href="{{ url:site }}store/customer/add_to_wishlist/{{ product:id }}"><?php echo lang('store:add_to_wishlist'); ?></a>
+                    </p>
             <?php echo form_close(); ?>
         </div>
         <div style="clear: both"></div>
@@ -80,9 +88,9 @@
             <div class="tab-pane active" id="information">
                 <h3>Information</h3>
                 <ul class="list-unstyled">
-                <li>
+                <!--<li>
                     <b><?php echo lang('store:date_created'); ?></b>: <span>{{ product:created }}</span>
-                </li>
+                </li>-->
                 <li>
                     <b><?php echo lang('store:status'); ?></b>: <span><?php echo lang('store:status_' . $product->status) ?></span>
                 </li>
@@ -102,9 +110,6 @@
                     </div>
                 </li>
                 <?php endif; ?>
-                <li>
-                    <a href="{{ url:site }}store/customer/add_to_wishlist/{{ product:id }}"><?php echo lang('store:add_to_wishlist'); ?></a>
-                </li>
                 </ul>
             </div>
             {{ if product:description }}
