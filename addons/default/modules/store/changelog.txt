@@ -1,0 +1,40 @@
+# 1.5.5
+
+## Features
+
+- Discount coupons 
+- Sitemap XML
+- Product SKU field
+- Wishlist widget
+- Customer widget
+
+## Fixes
+
+- gateway multiplication
+- product filter
+- attributes special chars
+
+
+===================================
+
+# 1.5.4
+
+## Changelog
+
+- keywords support in products
+- brand new product options
+- short description is used as meta description
+- product tags are used as meta keywords
+- filter product by tags (store/tagged/{your-tag})
+- comments support
+- stripe gateway
+
+====================================
+
+# 1.5.3
+
+- PHP 5.3 support
+- SSL support
+- added Events
+- created easier development of gateways
+- added wishlist, address book
